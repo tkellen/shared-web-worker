@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>web worker test</title>
+  </head>
+  <body>
+    <textarea id='messages' style='width:800px;height:200px'></textarea>
+    <script>
+    var name = Math.random().toString(36).substring(7);
+    var counter = 0;
+    var worker = new SharedWorker('worker.js');
+    var messageBox = document.getElementById('messages');
+
+    worker.port.addEventListener('message', function(e) {
+      messageBox.value += e.data.name+' '+e.data.count+'\n';
+      messageBox.scrollTop = messageBox.scrollHeight;
+    }.bind(this), false);
+    worker.port.start();
+
+    // send a message every 1/2 second
+    setInterval(function() {
+      worker.port.postMessage({
+        name: name,
+        count: ++counter
+      });
+    }, 500);
+    </script>
+  </body>
+</html>

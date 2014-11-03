@@ -1,0 +1,17 @@
+{
+  "name": "shared-web-worker",
+  "description": "A minimal implementation for testing cross-tab communication.",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://github.com/tkellen/shared-web-worker",
+  "author": {
+    "name": "Tyler Kellen",
+    "url": "http://goingslowly.com/"
+  },
+  "scripts": {
+    "start": "servedir ./"
+  },
+  "dependencies": {
+    "servedir": "^0.2.2"
+  }
+}
